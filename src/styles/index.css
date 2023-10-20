@@ -1,0 +1,408 @@
+@font-face {
+  font-family: Mukta;
+  src: url(../fonts/Mukta/Mukta-Regular.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Mukta", Arial, Helvetica, sans-serif;
+}
+
+.chat-app {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  min-width: 100px;
+  height: 95%;
+  min-height: 100px;
+}
+/* GORNJI DIO APLIKACIJE */
+
+.members {
+  height: 80px;
+  width: 100%;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.members > div {
+  font-size: 0.75rem;
+}
+
+.members > ul {
+  display: flex;
+  justify-content: flex-end;
+
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.members li {
+  display: flex;
+  align-items: center;
+
+  height: 24px;
+  margin-right: 10px;
+}
+
+.members li > div:first-child,
+.message > div {
+  border-radius: 50%;
+  height: 1.125rem;
+  width: 1.125rem;
+  margin-right: 2px;
+}
+
+.members li span {
+  display: inline-block;
+  height: 1.125rem;
+  line-height: 1.125rem;
+  font-size: 0.875rem;
+  margin-left: 2px;
+}
+
+/* SREDNJI DIO APLIKACIJE */
+
+.messages {
+  height: 70vh;
+  width: 100%;
+  padding: 10px;
+  list-style: none;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to top,
+    rgba(65, 105, 225, 0.4),
+    rgba(253, 253, 253, 1)
+  );
+
+  overflow: auto;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+
+  margin: 10px;
+}
+
+.message > div:nth-child(2) {
+  width: auto;
+  height: auto;
+  max-width: 40%;
+  font-size: 0.75rem;
+  line-height: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 0px 10px 0px 5px;
+}
+
+.message p {
+  line-height: 1.2;
+  font-size: 0.875rem;
+
+  padding-right: 10px;
+}
+
+.my-message {
+  display: flex;
+  flex-direction: row-reverse;
+
+  margin: 10px;
+}
+
+/* DONJI DIO APLIKACIJE */
+.form-container {
+  width: 100%;
+  height: 50px;
+  box-shadow: 3px;
+}
+
+.form-container form {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 10px 1px rgba(40, 60, 120, 0.8);
+  border-radius: 10px;
+  padding: 5px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+}
+
+.form-container input:focus {
+  outline: none;
+}
+
+@keyframes button-hover {
+  0% {
+    transform: rotate(4deg);
+  }
+  20% {
+    transform: rotate(-4deg);
+  }
+
+  40% {
+    transform: rotate(6deg);
+  }
+
+  60% {
+    transform: rotate(-6deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.form-container button {
+  padding: 10px;
+  width: 80px;
+  border-radius: 8px;
+  background-color: royalblue;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.form-container button:hover {
+  animation-name: button-hover;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-delay: 1s;
+  animation-timing-function: ease-out;
+}
+
+/* TYPING INDICATOR */
+.typing-container {
+  height: 20px;
+  padding: 5px;
+  align-self: flex-start;
+}
+
+.typing {
+  font-size: 0.625rem;
+
+  text-align: left;
+}
+
+/* SCROLLBAR */
+.messages,
+.members > ul {
+  scrollbar-width: thin;
+  scrollbar-color: royalblue;
+}
+
+.messages::-webkit-scrollbar,
+.members > ul::-webkit-scrollbar {
+  width: 14px;
+}
+
+.messages::-webkit-scrollbar-thumb,
+.members > ul::-webkit-scrollbar-thumb {
+  background: royalblue;
+  border-radius: 7px;
+}
+
+.messages::-webkit-scrollbar-track,
+.members > ul::-webkit-scrollbar-track {
+  background-color: inherit;
+}
+
+.messages::-webkit-scrollbar-button,
+.members > ul::-webkit-scrollbar-button {
+  display: none;
+  height: 20px;
+  background-color: #4d7fff;
+  border-radius: 10px;
+}
+
+/* -------------------------- */
+/* MODAL WINDOW */
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 5px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+}
+
+.modal form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal input {
+  margin: 20px 0px 20px 20px;
+  width: 300px;
+  height: 50px;
+  padding: 10px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 1);
+}
+
+.modal input:focus {
+  outline: none;
+}
+
+.modal button {
+  width: 50px;
+  height: 50px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 1);
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.modal h2 {
+  text-align: center;
+  padding: 30px;
+  font-size: 2rem;
+  line-height: 1.5;
+
+  color: #4d7fff;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+
+  text-transform: uppercase;
+
+  text-wrap: wrap;
+}
+
+.modal ul {
+  list-style: none;
+  text-indent: 20px;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 1100px) {
+  /* MODAL WINDOW */
+  .modal h2 {
+    font-size: 1.75rem;
+    padding: 1rem;
+  }
+}
+@media only screen and (max-width: 930px) {
+  * {
+    margin: 0.3rem;
+    padding: 0rem;
+  }
+
+  /* APLIKACIJA */
+
+  .form-container form {
+    margin: 0px;
+  }
+
+  .form-container input {
+    margin: 0px;
+    flex-shrink: 1;
+  }
+
+  .form-container button {
+    margin: 0px;
+    padding: 0px;
+    flex-shrink: 1;
+  }
+
+  /* MODAL WINDOW */
+  .modal {
+    padding: 0px;
+    margin: 1rem;
+    padding: 1.5rem;
+    font-size: 16px;
+  }
+
+  .modal h2 {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .modal label {
+    display: none;
+    margin: 1rem;
+    padding: 0rem;
+  }
+
+  .modal form {
+    flex-direction: column;
+    margin: 1rem;
+    padding: 0rem;
+  }
+
+  .modal input {
+    flex-direction: column;
+    margin: 1rem 0rem 0rem 0rem;
+    padding: 0rem;
+    width: 100%;
+    font-size: 2rem;
+  }
+
+  .modal button {
+    width: 100%;
+    height: 2rem;
+    margin: 0rem 0rem 1rem 0rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  /* MODAL WINDOW */
+
+  .modal h2 {
+    font-size: 1rem;
+    padding: 0;
+  }
+}
+@media only screen and (max-width: 430px) {
+  /* APLIKACIJA */
+
+  .form-container button {
+    width: 40px;
+
+    flex-shrink: 1;
+  }
+}
