@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.60836131.css",
+    "main.js": "/static/js/main.5aef89b9.js",
+    "static/media/Mukta-Regular.ttf": "/static/media/Mukta-Regular.044d4dd07d7636695eda.ttf",
+    "index.html": "/index.html",
+    "main.60836131.css.map": "/static/css/main.60836131.css.map",
+    "main.5aef89b9.js.map": "/static/js/main.5aef89b9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.60836131.css",
+    "static/js/main.5aef89b9.js"
+  ]
+}
